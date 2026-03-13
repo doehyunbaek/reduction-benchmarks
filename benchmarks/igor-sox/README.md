@@ -6,9 +6,9 @@ Downloaded from
 
 ## README from datacommons.anu.edu.au
 
-The archives are the compiled binaries that are used for the fuzzing experiments. 
+The archives are the compiled binaries that are used for the fuzzing experiments.
 The dependencies as seen on the fuzzing machines are captured in the dependencies files.
-As a note, the binary used for fuzzing WAV is the same as MP3 (SoX), hence, there is no separate binary 
+As a note, the binary used for fuzzing   is the same as MP3 (SoX), hence, there is no separate binary
 dedicated for fuzzing WAV.
 
 The prefix indicates the program:
@@ -19,3 +19,18 @@ The prefix indicates the program:
 * ttf253      : FreeType (2.5.3)
 * wav         : SoX - Sound Exchange (14.4.2) used to fuzz WAV
 * xml290      : Libxml2 (2.9.0)
+
+## How to run SoX in this benchmark
+
+The bundled binary is a 32-bit executable at:
+
+`sox_llvm_asan/afl-build/bin/sox`
+
+It needs the local runtime libraries in `sox_llvm_asan/i386-linux-gnu`.
+
+From this directory (`benchmarks/igor-sox`):
+
+```bash
+export LD_LIBRARY_PATH="$PWD/sox_llvm_asan/i386-linux-gnu:$PWD/sox_llvm_asan/afl-build/lib"
+./sox_llvm_asan/afl-build/bin/sox --help
+```
