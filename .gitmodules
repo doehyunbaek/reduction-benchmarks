@@ -1,0 +1,3 @@
+[submodule "tools/GTR"]
+	path = tools/GTR
+	url = https://github.com/sherfert/GTR
